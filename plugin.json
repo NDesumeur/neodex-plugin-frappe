@@ -3,7 +3,7 @@
   "name": "Test de frappe",
   "version": "1.3.2",
   "author": "NDesumeur",
-  "description": "Teste ta vitesse de frappe : modes au temps ou aux mots, ponctuation, historique de tes parties.",
+  "description": "Mesure ta vitesse de frappe : tape les mots affichés, le chrono démarre à la première lettre et les fautes s'allument en rouge. Modes au temps (15 s à 2 min) ou aux mots (25 ou 50), option ponctuation et majuscules, résultat en mots par minute avec vitesse brute et précision, record par mode et graphique de tes 20 dernières parties.",
   "icon": "icon.png",
   "entry": "index.js",
   "view": "frappe",
