@@ -39,3 +39,9 @@ Your records per mode and the history of your last 200 games are stored by NeoDe
 In NeoDex: **NeoStore → Discover → Test de frappe → Install**.
 
 Building a plugin: see the [NeoDex SDK](https://github.com/NDesumeur/neodex-sdk).
+
+## New style and missed keys
+
+- **The style of the recent games**: pixel art frames, buttons and font.
+- **Big text**: the text to type and the keyboard grow with the window; the current line always stays visible.
+- **Missed keys**: each mistake is counted on the expected letter. On the keyboard, keys you often miss turn from yellow (a little) to red (often), and the five most missed are listed below with their percentage. A key needs at least 5 presses to count.

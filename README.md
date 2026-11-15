@@ -39,3 +39,9 @@ Tes records par mode et l'historique de tes 200 dernières parties sont enregist
 Dans NeoDex : **NeoStore → À découvrir → Test de frappe → Installer**.
 
 Développer un plugin : voir le [SDK NeoDex](https://github.com/NDesumeur/neodex-sdk).
+
+## Nouveau style et touches ratées
+
+- **Le style des jeux récents** : cadres, boutons et police en pixel art.
+- **Un texte bien gros** : le texte à taper et le clavier grandissent avec la fenêtre ; la ligne en cours reste toujours visible.
+- **Les touches ratées** : chaque faute est comptée sur la lettre attendue. Sur le clavier, les touches que tu rates souvent se colorent du jaune (un peu) au rouge (souvent), et la liste des cinq plus ratées s'affiche dessous, avec leur pourcentage. Il faut au moins 5 frappes sur une touche pour qu'elle compte.
