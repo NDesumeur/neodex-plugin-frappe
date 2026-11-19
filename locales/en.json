@@ -19,7 +19,6 @@
  "RECOMMENCER": "RESTART",
  "Record :": "Record:",
  "Record dans ce mode :": "Record in this mode:",
- "Records et historique des scores.": "Records and score history.",
  "TEST DE FRAPPE": "TYPING TEST",
  "Tab": "Tab",
  "Tab ou Échap : recommencer": "Tab or Esc: start again",
@@ -74,5 +73,6 @@
  "KBBBBBK": "KBBBBBK",
  "KDDDDDK": "KDDDDDK",
  "KDDDDDDK": "KDDDDDDK",
- "KDDHHDDK": "KDDHHDDK"
+ "KDDHHDDK": "KDDHHDDK",
+ "Rien n'est synchronisé : tes records restent sur cet appareil.": "Nothing is synced: your records stay on this device."
 }
