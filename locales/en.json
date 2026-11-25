@@ -74,5 +74,22 @@
  "KDDDDDK": "KDDDDDK",
  "KDDDDDDK": "KDDDDDDK",
  "KDDHHDDK": "KDDHHDDK",
- "Rien n'est synchronisé : tes records restent sur cet appareil.": "Nothing is synced: your records stay on this device."
+ "Rien n'est synchronisé : tes records restent sur cet appareil.": "Nothing is synced: your records stay on this device.",
+ "Premiers mots": "First words",
+ "Finir un premier test": "Finish your first test",
+ "Bonne allure": "Good pace",
+ "Taper à 40 mots par minute": "Type at 40 words per minute",
+ "Dactylo": "Typist",
+ "Taper à 60 mots par minute": "Type at 60 words per minute",
+ "Doigts de feu": "Fingers of fire",
+ "Taper à 80 mots par minute": "Type at 80 words per minute",
+ "Cent à l'heure": "Full speed",
+ "Taper à 100 mots par minute": "Type at 100 words per minute",
+ "Sans une faute": "Not a single typo",
+ "Finir un test d'au moins 30 s avec 100 % de précision": "Finish a test of 30 s or more with 100 % accuracy",
+ "Clavier usé": "Worn-out keyboard",
+ "Finir 100 tests": "Finish 100 tests",
+ "Meilleure vitesse": "Best speed",
+ "mots/min": "wpm",
+ "Meilleure précision (30 s et plus)": "Best accuracy (30 s or more)"
 }

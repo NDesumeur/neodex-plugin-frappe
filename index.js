@@ -331,6 +331,9 @@ export default async function (ctx) {
   let gamesTimer = null;
   const saveGames = () => { clearTimeout(gamesTimer); gamesTimer = setTimeout(() => { gamesTimer = null; folder.write('games', games).catch(() => {}); }, 500); };
   const best = (k, v, higher = true) => { const b = games.best[k]; if (b == null || (higher ? v > b : v < b)) { games.best[k] = v; saveGames(); return true; } return false; };
+  // les trophées de NeoDex (3.4.8 et plus) : succès et records déclarés dans plugin.json ; sur un NeoDex plus ancien, rien ne se passe
+  const trophy = id => { ctx.games?.unlock(id).catch(() => {}); };
+  const trophyRecord = (id, v) => { if (v != null && Number.isFinite(+v)) ctx.games?.record(id, +v).catch(() => {}); };
   // ---- ton code d'origine ----
   /* ---------- Test de frappe: modes by time or by number of words, optional punctuation, letter by letter feedback ---------- */
   const TY_WORDS = ('le de un être et à il avoir ne je son que se qui ce dans en du elle au pour pas vous par sur faire plus dire me on mon lui nous comme mais pouvoir avec tout aller voir bien où sans tu ou leur homme si deux moi vouloir te femme venir quand grand celui notre devoir là jour prendre même votre rien petit encore aussi quelque dont mer trouver donner temps peu falloir sous parler alors main chose ton mettre vie savoir yeux passer autre après regarder toujours puis jamais cela aimer non heure croire cent monde donc enfant fois seul entre vers chez demander jeune jusque très moment rester répondre tête père fille mille premier car entendre bon trois cœur an quatre terre contre voix penser quel arriver maison devant coup beau connaître devenir air mot nuit sentir vieux sembler moins tenir ami porte ouvrir partir pendant mieux depuis ville chat livre école musique jouer écran clavier étoile pixel couleur fenêtre soleil route lumière histoire matin soir rapide lent simple question réponse idée travail ensemble bientôt souvent parfois vrai faux image page lettre nombre jeu partie niveau').split(' ');
@@ -382,6 +385,7 @@ export default async function (ctx) {
     card.style.display = ''; sfx(rec ? 'launch' : 'notify'); tyHist(); tyHeatDraw();
   }
   function tyHist() {
+    setTimeout(tyTrophies);
     const h = (games?.typing || []).filter(x => (x.mode || String(x.secs)) === tyMode() + ($('tyPunct').checked ? 'p' : '')), last = h.slice(-20), max = Math.max(40, ...last.map(x => x.wpm));
     $('tyBest').textContent = 'Record dans ce mode : ' + (games?.best['typing' + tyMode() + ($('tyPunct').checked ? 'p' : '')] ?? '—') + ' mots/min';
     $('tyChart').replaceChildren(...(last.length ? last.map(x => { const c = el('div', 'col'), b = el('div', 'bar'); b.style.height = x.wpm / max * 120 + 'px'; c.title = new Date(x.t).toLocaleString('fr-FR', {day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'}) + ' : ' + x.wpm + ' mots/min, ' + x.acc + ' %'; c.append(b, el('span', '', String(x.wpm))); return c; }) : [el('div', 'hint', 'Tes parties dans ce mode apparaîtront ici.')]));
@@ -432,6 +436,14 @@ export default async function (ctx) {
     games.typeKeys = JSON.parse(kS) ?? undefined; games.typeMiss = JSON.parse(kM) ?? undefined; if (!games.typeKeys) delete games.typeKeys; if (!games.typeMiss) delete games.typeMiss;
   }
   // ---- fin ----
+  // les trophées, tirés des statistiques et des records gardés (aussi à l'ouverture : ce qui a été fait avant compte)
+  function tyTrophies() {
+    const h = games?.typing || [], sig = h.length + ':' + (h.at(-1)?.t || 0); if (sig === tyTrophies.sig) return; tyTrophies.sig = sig;
+    const w = Math.max(0, ...Object.entries(games.best).filter(([k]) => k.startsWith('typing')).map(([, v]) => v), ...h.map(x => x.wpm)), long = h.filter(x => x.secs >= 30), acc = Math.max(0, ...long.map(x => x.acc));
+    trophyRecord('vitesse', w || null); trophyRecord('precision', long.length ? acc : null);
+    if (h.length) trophy('premier'); if (w >= 40) trophy('w40'); if (w >= 60) trophy('w60'); if (w >= 80) trophy('w80'); if (w >= 100) trophy('w100');
+    if (acc >= 100) trophy('parfait'); if (h.length >= 100) trophy('cent');
+  }
   ctx.onOpen(() => { if (!ty) tyNew(); tyHist(); setTimeout(() => $('tyIn').focus()); });
   ctx.onClose(() => { clearInterval(ty?.timer); });
 }

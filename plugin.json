@@ -1,7 +1,7 @@
 {
   "id": "neodex.frappe",
   "name": "Test de frappe",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "author": "NDesumeur",
   "description": "Mesure ta vitesse de frappe : tape les mots affichés, le chrono démarre à la première lettre et les fautes s'allument en rouge. Modes au temps (15 s à 2 min) ou aux mots (25 ou 50), option ponctuation et majuscules, résultat en mots par minute avec vitesse brute et précision, record par mode et graphique de tes 20 dernières parties. Nouveau style pixel art, texte à taper bien gros qui suit la taille de la fenêtre, et les touches que tu rates le plus colorées sur le clavier.",
   "icon": "icon.png",
@@ -10,7 +10,10 @@
   "neobase": ">=4.0.0",
   "type": "app",
   "category": "Jeux",
-  "compatibility": ["windows", "linux"],
+  "compatibility": [
+    "windows",
+    "linux"
+  ],
   "syncMode": "aucune",
   "syncInfo": "Rien n'est synchronisé : tes records restent sur cet appareil.",
   "mobile": false,
@@ -19,5 +22,58 @@
   "sdk": "2.1.0",
   "permissions": [
     "storage"
+  ],
+  "succes": [
+    {
+      "id": "premier",
+      "nom": "Premiers mots",
+      "texte": "Finir un premier test"
+    },
+    {
+      "id": "w40",
+      "nom": "Bonne allure",
+      "texte": "Taper à 40 mots par minute"
+    },
+    {
+      "id": "w60",
+      "nom": "Dactylo",
+      "texte": "Taper à 60 mots par minute"
+    },
+    {
+      "id": "w80",
+      "nom": "Doigts de feu",
+      "texte": "Taper à 80 mots par minute"
+    },
+    {
+      "id": "w100",
+      "nom": "Cent à l'heure",
+      "texte": "Taper à 100 mots par minute",
+      "cache": true
+    },
+    {
+      "id": "parfait",
+      "nom": "Sans une faute",
+      "texte": "Finir un test d'au moins 30 s avec 100 % de précision"
+    },
+    {
+      "id": "cent",
+      "nom": "Clavier usé",
+      "texte": "Finir 100 tests"
+    }
+  ],
+  "records": [
+    {
+      "id": "vitesse",
+      "nom": "Meilleure vitesse",
+      "sens": "haut",
+      "format": "nombre",
+      "unite": "mots/min"
+    },
+    {
+      "id": "precision",
+      "nom": "Meilleure précision (30 s et plus)",
+      "sens": "haut",
+      "format": "pourcent"
+    }
   ]
 }
